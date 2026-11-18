@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prashna Baisoya | Frontend Web Developer Portfolio</title>
+  <meta name="description" content="Responsive personal portfolio of Prashna Baisoya built with semantic HTML5, CSS Grid, Flexbox, and dynamic Light/Dark theming.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo" aria-label="Prashna Baisoya Home">Prashna<span>.dev</span></a>
+      <div class="header-controls">
+        <nav aria-label="Primary Navigation">
+          <ul>
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <span id="theme-icon" aria-hidden="true">🌙</span>
+          <span id="theme-text">Dark Mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section aria-labelledby="hero-heading">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge">Available for Frontend Internships</span>
+          <h1 id="hero-heading">Hi, I'm Prashna Baisoya</h1>
+          <p class="lead">Frontend Web Developer crafting responsive, accessible, and standards-compliant web experiences with modern HTML5 and CSS3.</p>
+          <div class="cta-group">
+            <a href="projects.html" class="btn btn-primary">Explore Projects</a>
+            <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Developer Highlights">
+          <h2>Architecture Focus</h2>
+          <p>Every layout is engineered mobile-first using CSS Grid, Flexbox, and WCAG AA contrast standards.</p>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Lighthouse SEO</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Accessibility</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">WCAG</span>
+              <span class="stat-label">2.1 AA Ready</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">3+</span>
+              <span class="stat-label">Responsive Views</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section aria-labelledby="about-heading">
+      <div class="container about-grid">
+        <article>
+          <h2 id="about-heading">About Me</h2>
+          <p>I am a frontend web developer passionate about clean architecture, responsive design systems, and inclusive user interfaces.</p>
+          <p>By combining semantic HTML5 landmarks with two-dimensional CSS Grid layouts and custom CSS variables, I ensure websites adapt smoothly from compact smartphones to wide desktop monitors.</p>
+        </article>
+
+        <div>
+          <h2>Core Technical Skills</h2>
+          <ul class="skills-grid">
+            <li>Semantic HTML5 &amp; WAI-ARIA</li>
+            <li>CSS Grid &amp; Flexbox Layouts</li>
+            <li>Mobile-First Media Queries</li>
+            <li>CSS Custom Properties &amp; Theming</li>
+            <li>WCAG 2.1 AA Accessibility</li>
+            <li>Technical SEO &amp; Performance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Prashna Baisoya. Built with Semantic HTML5 &amp; Responsive CSS3.</p>
+      <nav aria-label="Social Links">
+        <ul>
+          <li><a href="https://github.com/PrashnaBaisoya" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+    const root = document.documentElement;
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('portfolio-theme', theme);
+      const isDark = theme === 'dark';
+      toggleBtn.setAttribute('aria-pressed', isDark);
+      themeIcon.textContent = isDark ? '☀️' : '🌙';
+      themeText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    }
+
+    const savedTheme = localStorage.getItem('portfolio-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(savedTheme);
+
+    toggleBtn.addEventListener('click', () => {
+      const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+    });
+  </script>
+</body>
+</html>

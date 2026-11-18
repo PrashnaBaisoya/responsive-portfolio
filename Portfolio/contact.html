@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Prashna Baisoya Portfolio</title>
+  <meta name="description" content="Contact Prashna Baisoya for frontend development internships, responsive web design, or collaboration.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo" aria-label="Prashna Baisoya Home">Prashna<span>.dev</span></a>
+      <div class="header-controls">
+        <nav aria-label="Primary Navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
+          </ul>
+        </nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <span id="theme-icon" aria-hidden="true">🌙</span>
+          <span id="theme-text">Dark Mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section aria-labelledby="contact-heading">
+      <div class="container">
+        <span class="badge">Get in Touch</span>
+        <h1 id="contact-heading">Contact Me</h1>
+        <p class="lead">Have an internship opportunity or project idea? Reach out using the accessible form below.</p>
+
+        <div class="contact-layout">
+          <aside class="contact-info" aria-label="Contact Details">
+            <h2>Direct Details</h2>
+            <p>I respond to all internship and project inquiries within 24 hours.</p>
+            <ul class="skills-grid" style="grid-template-columns: 1fr;">
+              <li>Location: India (Remote / On-site)</li>
+              <li>Availability: Immediate</li>
+              <li>GitHub: @PrashnaBaisoya</li>
+            </ul>
+          </aside>
+
+          <form action="#" method="post" aria-labelledby="contact-heading">
+            <fieldset>
+              <legend>Send a Direct Message</legend>
+
+              <div class="form-group">
+                <label for="full-name">Full Name <span aria-hidden="true">*</span></label>
+                <input
+                  type="text"
+                  id="full-name"
+                  name="full-name"
+                  required
+                  aria-required="true"
+                  autocomplete="name"
+                  placeholder="e.g., Aarav Sharma">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address <span aria-hidden="true">*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  aria-required="true"
+                  autocomplete="email"
+                  aria-describedby="email-hint"
+                  placeholder="e.g., aarav@example.com">
+                <small id="email-hint">Your email address will remain private.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="inquiry-type">Reason for Contact</label>
+                <select id="inquiry-type" name="inquiry-type">
+                  <option value="internship">Internship Opportunity</option>
+                  <option value="project">Freelance Project</option>
+                  <option value="general">General Inquiry</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message <span aria-hidden="true">*</span></label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  aria-required="true"
+                  placeholder="Write your message here..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Prashna Baisoya. Built with Semantic HTML5 &amp; Responsive CSS3.</p>
+      <nav aria-label="Social Links">
+        <ul>
+          <li><a href="https://github.com/PrashnaBaisoya" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+    const root = document.documentElement;
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('portfolio-theme', theme);
+      const isDark = theme === 'dark';
+      toggleBtn.setAttribute('aria-pressed', isDark);
+      themeIcon.textContent = isDark ? '☀️' : '🌙';
+      themeText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    }
+
+    const savedTheme = localStorage.getItem('portfolio-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(savedTheme);
+
+    toggleBtn.addEventListener('click', () => {
+      const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+    });
+  </script>
+</body>
+</html>

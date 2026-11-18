@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Prashna Baisoya Portfolio</title>
+  <meta name="description" content="Explore responsive web development projects built by Prashna Baisoya using CSS Grid, Flexbox, and accessible HTML5.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo" aria-label="Prashna Baisoya Home">Prashna<span>.dev</span></a>
+      <div class="header-controls">
+        <nav aria-label="Primary Navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" aria-current="page">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <span id="theme-icon" aria-hidden="true">🌙</span>
+          <span id="theme-text">Dark Mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section aria-labelledby="projects-heading">
+      <div class="container">
+        <span class="badge">Responsive Showcase</span>
+        <h1 id="projects-heading">Featured Projects</h1>
+        <p class="lead">Built with two-dimensional CSS Grid cards, Flexbox alignment, and mobile-first breakpoints.</p>
+
+        <div class="project-grid">
+          <article class="card" aria-labelledby="proj-1-title">
+            <div>
+              <header>
+                <p class="meta">HTML5 • CSS Grid • WAI-ARIA</p>
+                <h2 id="proj-1-title">Accessible E-Commerce Storefront</h2>
+              </header>
+              <p>A keyboard-navigable product catalog with responsive grid columns, screen-reader cart announcements, and high-contrast theming.</p>
+            </div>
+            <footer>
+              <a href="#" aria-label="View live demo of Accessible E-Commerce Storefront">Live Demo &rarr;</a>
+              <a href="#" aria-label="View source code for Accessible E-Commerce Storefront">Source Code</a>
+            </footer>
+          </article>
+
+          <article class="card" aria-labelledby="proj-2-title">
+            <div>
+              <header>
+                <p class="meta">Semantic HTML • Flexbox • JS</p>
+                <h2 id="proj-2-title">Task Management Dashboard</h2>
+              </header>
+              <p>A multi-column productivity workspace engineered with CSS Grid areas, accessible modals, and persistent theme preferences.</p>
+            </div>
+            <footer>
+              <a href="#" aria-label="View live demo of Task Management Dashboard">Live Demo &rarr;</a>
+              <a href="#" aria-label="View source code for Task Management Dashboard">Source Code</a>
+            </footer>
+          </article>
+
+          <article class="card" aria-labelledby="proj-3-title">
+            <div>
+              <header>
+                <p class="meta">CSS Variables • REST API • Mobile-First</p>
+                <h2 id="proj-3-title">Weather Forecast Portal</h2>
+              </header>
+              <p>Real-time weather dashboard adapting seamlessly from single-column mobile views to multi-panel desktop layouts.</p>
+            </div>
+            <footer>
+              <a href="#" aria-label="View live demo of Weather Forecast Portal">Live Demo &rarr;</a>
+              <a href="#" aria-label="View source code for Weather Forecast Portal">Source Code</a>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Prashna Baisoya. Built with Semantic HTML5 &amp; Responsive CSS3.</p>
+      <nav aria-label="Social Links">
+        <ul>
+          <li><a href="https://github.com/PrashnaBaisoya" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+    const root = document.documentElement;
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('portfolio-theme', theme);
+      const isDark = theme === 'dark';
+      toggleBtn.setAttribute('aria-pressed', isDark);
+      themeIcon.textContent = isDark ? '☀️' : '🌙';
+      themeText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    }
+
+    const savedTheme = localStorage.getItem('portfolio-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(savedTheme);
+
+    toggleBtn.addEventListener('click', () => {
+      const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+    });
+  </script>
+</body>
+</html>
